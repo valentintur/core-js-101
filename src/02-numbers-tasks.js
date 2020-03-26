@@ -52,10 +52,12 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  if (value1 === Infinity || value2 === Infinity) {
+  const average = ((value1 + value2) / 2);
+  if (value1 > (Number.MAX_SAFE_INTEGER) || value1 < (-Number.MAX_SAFE_INTEGER)
+  || value2 > (Number.MAX_SAFE_INTEGER) || value2 < (-Number.MAX_SAFE_INTEGER)) {
     return Infinity;
   }
-  return ((value1 + value2) / 2);
+  return average;
 }
 
 /**
@@ -129,9 +131,9 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  let str = value.toString();
-  str = str[str.length];
-  return str;
+  const str = value.toString();
+  const last = str[str.length - 1];
+  return last;
 }
 
 

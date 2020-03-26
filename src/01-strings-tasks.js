@@ -203,12 +203,14 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  const topleft = '┌'; const topRight = '┐'; const bottomRight = '┘'; const bottomLeft = '└'; const horizontal = '─';
-  const space = ' '; const
-    column = `|${space.repeat(width - 2)}|\n`;
+  const topleft = '┌'; const topRight = '┐'; const bottomRight = '┘'; const bottomLeft = '└';
+  const horizontal = '─';
+  const space = ' ';
+  const column = `│${space.repeat(width - 2)}│\n`;
+
   const sqrt = `${topleft + horizontal.repeat(width - 2) + topRight}\n`
-            + `${column.repeat(height - 2)}`
-           + `${bottomLeft}${horizontal.repeat(width - 2)}${bottomRight}\n`;
+             + `${column.repeat(height - 2)}`
+             + `${bottomLeft}${horizontal.repeat(width - 2)}${bottomRight}\n`;
   return sqrt;
 }
 
@@ -230,6 +232,17 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(/* str */) {
+  /* const input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  let str2 = '';
+  for (let i = 0; i < str.length; i += 1) {
+    for (let j = 0; j < input.length; j += 1) {
+      if (str.charAt(i) === input.charAt(i)) {
+        str2 = str.replace(str.charAt(i), output.charAt(i));
+      }
+    }
+  }
+  return str2; */
   throw new Error('Not implemented');
 }
 
@@ -247,7 +260,7 @@ function encodeToRot13(/* str */) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  return typeof (value) === 'string';
+  return typeof value === 'string';
 }
 
 
@@ -275,8 +288,19 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  let number;
+  const arr = [
+    'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠',
+  ];
+  for (let i = 0; i < arr.length; i += 1) {
+    if (value === arr[i]) { number = i; }
+  }
+
+  return number;
 }
 
 
