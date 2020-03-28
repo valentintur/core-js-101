@@ -52,12 +52,7 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  const average = ((value1 + value2) / 2);
-  if (value1 > (Number.MAX_SAFE_INTEGER) || value1 < (-Number.MAX_SAFE_INTEGER)
-  || value2 > (Number.MAX_SAFE_INTEGER) || value2 < (-Number.MAX_SAFE_INTEGER)) {
-    return Infinity;
-  }
-  return average;
+  return value1 / 2 + value2 / 2;
 }
 
 /**

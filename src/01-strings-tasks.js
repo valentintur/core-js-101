@@ -260,7 +260,7 @@ function encodeToRot13(/* str */) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  return typeof value === 'string';
+  return typeof value === 'string' || value instanceof String;
 }
 
 
@@ -289,7 +289,7 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  let number;
+  let result;
   const arr = [
     'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
     'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
@@ -297,10 +297,9 @@ function getCardId(value) {
     'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠',
   ];
   for (let i = 0; i < arr.length; i += 1) {
-    if (value === arr[i]) { number = i; }
+    if (value === arr[i]) { result = i; }
   }
-
-  return number;
+  return result;
 }
 
 
