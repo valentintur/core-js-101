@@ -20,5 +20,6 @@ module.exports = {
    // "no-extend-native": 0,
   //  "max-len": 0,
   //  'no-restricted-globals': 0,
+      'no-extend-native': ["error", { "exceptions": ["String"] }],
   },
 };

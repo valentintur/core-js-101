@@ -250,10 +250,7 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  if (isNaN(Number(value))) {
-    return def;
-  }
-  if (typeof value === 'number' || value instanceof Number) {
+  if (!(Number.isNaN(Number(value))) || typeof value === 'number' || value instanceof Number) {
     return Number(value);
   } return def;
 }
