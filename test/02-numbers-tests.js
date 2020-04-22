@@ -93,9 +93,9 @@ describe('02-numbers-tasks', () => {
     assert.equal(0, tasks.toNumber(null, 0));
     assert.equal(0, tasks.toNumber('test', 0));
     assert.equal(1, tasks.toNumber('1', 0));
-   // assert.equal(42, tasks.toNumber(42, 0));
+    assert.equal(42, tasks.toNumber(42, 0));
     // eslint-disable-next-line no-new-wrappers
-    //assert.equal(42, tasks.toNumber(new Number(42), 0));
-    //assert.equal(-1, tasks.toNumber(undefined, -1));
+    assert.equal(42, tasks.toNumber(new Number(42), 0));
+    assert.equal(-1, tasks.toNumber(undefined, -1));
   });
 });
