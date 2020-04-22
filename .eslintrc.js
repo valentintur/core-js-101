@@ -16,5 +16,8 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    "no-param-reassign": 0,
+    "no-extend-native": 0,
+    "max-len": 0,
   },
 };

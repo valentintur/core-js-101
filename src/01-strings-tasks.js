@@ -231,19 +231,33 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  /* const input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  const output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
-  let str2 = '';
+
+
+function encodeToRot13(str) {
+  String.prototype.replaceAt = function (index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+  };
+
   for (let i = 0; i < str.length; i += 1) {
-    for (let j = 0; j < input.length; j += 1) {
-      if (str.charAt(i) === input.charAt(i)) {
-        str2 = str.replace(str.charAt(i), output.charAt(i));
-      }
+    if (
+      (str.charCodeAt(i) >= 65 && str.charCodeAt(i) < 78)
+        || (str.charCodeAt(i) >= 97 && str.charCodeAt(i) < 110)
+    ) {
+      //   console.log(i, str[i], str.charCodeAt(i), '___', str.charCodeAt(i) + 13, String.fromCharCode(str.charCodeAt(i) + 13));
+      str = str.replaceAt(i, String.fromCharCode(str.charCodeAt(i) + 13));
+
+      // console.log(str);
+    } else if (
+      (str.charCodeAt(i) >= 78 && str.charCodeAt(i) <= 90)
+        || (str.charCodeAt(i) >= 110 && str.charCodeAt(i) <= 122)
+    ) {
+      //    console.log(i, str[i], str.charCodeAt(i), '___', str.charCodeAt(i) - 13, String.fromCharCode(str.charCodeAt(i) - 13));
+      str = str.replaceAt(i, String.fromCharCode(str.charCodeAt(i) - 13));
+      //    console.log(str);
     }
   }
-  return str2; */
-  throw new Error('Not implemented');
+  //  console.log(str);
+  return str;
 }
 
 /**
