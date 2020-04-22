@@ -234,7 +234,7 @@ function getRectangleString(width, height) {
 
 
 function encodeToRot13(str) {
-  String.prototype.replaceAt = function (index, replacement) {
+  String.prototype.replaceAt = function replacer(index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
   };
 
@@ -243,7 +243,10 @@ function encodeToRot13(str) {
       (str.charCodeAt(i) >= 65 && str.charCodeAt(i) < 78)
         || (str.charCodeAt(i) >= 97 && str.charCodeAt(i) < 110)
     ) {
-      //   console.log(i, str[i], str.charCodeAt(i), '___', str.charCodeAt(i) + 13, String.fromCharCode(str.charCodeAt(i) + 13));
+      /*
+         console.log(i, str[i], str.charCodeAt(i), '___', str.charCodeAt(i) + 13,
+          String.fromCharCode(str.charCodeAt(i) + 13));
+      */
       str = str.replaceAt(i, String.fromCharCode(str.charCodeAt(i) + 13));
 
       // console.log(str);
@@ -251,7 +254,10 @@ function encodeToRot13(str) {
       (str.charCodeAt(i) >= 78 && str.charCodeAt(i) <= 90)
         || (str.charCodeAt(i) >= 110 && str.charCodeAt(i) <= 122)
     ) {
-      //    console.log(i, str[i], str.charCodeAt(i), '___', str.charCodeAt(i) - 13, String.fromCharCode(str.charCodeAt(i) - 13));
+      /*
+      console.log(i, str[i], str.charCodeAt(i), '___',
+      str.charCodeAt(i) - 13, String.fromCharCode(str.charCodeAt(i) - 13));
+      */
       str = str.replaceAt(i, String.fromCharCode(str.charCodeAt(i) - 13));
       //    console.log(str);
     }
