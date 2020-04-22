@@ -203,14 +203,17 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  const topleft = '┌'; const topRight = '┐'; const bottomRight = '┘'; const bottomLeft = '└';
+  const topleft = '┌';
+  const topRight = '┐';
+  const bottomRight = '┘';
+  const bottomLeft = '└';
   const horizontal = '─';
   const space = ' ';
   const column = `│${space.repeat(width - 2)}│\n`;
 
   const sqrt = `${topleft + horizontal.repeat(width - 2) + topRight}\n`
-             + `${column.repeat(height - 2)}`
-             + `${bottomLeft}${horizontal.repeat(width - 2)}${bottomRight}\n`;
+    + `${column.repeat(height - 2)}`
+    + `${bottomLeft}${horizontal.repeat(width - 2)}${bottomRight}\n`;
   return sqrt;
 }
 
@@ -234,36 +237,44 @@ function getRectangleString(width, height) {
 
 
 function encodeToRot13(str) {
-  String.prototype.replaceAt = function replacer(index, replacement) {
-    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-  };
+  /*  String.prototype.replaceAt = function replacer(index, replacement) {
+      return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+    };
 
-  for (let i = 0; i < str.length; i += 1) {
-    if (
-      (str.charCodeAt(i) >= 65 && str.charCodeAt(i) < 78)
-        || (str.charCodeAt(i) >= 97 && str.charCodeAt(i) < 110)
-    ) {
-      /*
-         console.log(i, str[i], str.charCodeAt(i), '___', str.charCodeAt(i) + 13,
-          String.fromCharCode(str.charCodeAt(i) + 13));
-      */
-      str = str.replaceAt(i, String.fromCharCode(str.charCodeAt(i) + 13));
+    for (let i = 0; i < str.length; i += 1) {
+      if (
+        (str.charCodeAt(i) >= 65 && str.charCodeAt(i) < 78)
+          || (str.charCodeAt(i) >= 97 && str.charCodeAt(i) < 110)
+      ) {
+  */
+  /*
+     console.log(i, str[i], str.charCodeAt(i), '___', str.charCodeAt(i) + 13,
+      String.fromCharCode(str.charCodeAt(i) + 13));
+  */
+  /*      str = str.replaceAt(i, String.fromCharCode(str.charCodeAt(i) + 13));
 
-      // console.log(str);
-    } else if (
-      (str.charCodeAt(i) >= 78 && str.charCodeAt(i) <= 90)
-        || (str.charCodeAt(i) >= 110 && str.charCodeAt(i) <= 122)
-    ) {
-      /*
-      console.log(i, str[i], str.charCodeAt(i), '___',
-      str.charCodeAt(i) - 13, String.fromCharCode(str.charCodeAt(i) - 13));
-      */
-      str = str.replaceAt(i, String.fromCharCode(str.charCodeAt(i) - 13));
-      //    console.log(str);
+        // console.log(str);
+      } else if (
+        (str.charCodeAt(i) >= 78 && str.charCodeAt(i) <= 90)
+          || (str.charCodeAt(i) >= 110 && str.charCodeAt(i) <= 122)
+      ) {
+  */
+  /*
+  console.log(i, str[i], str.charCodeAt(i), '___',
+  str.charCodeAt(i) - 13, String.fromCharCode(str.charCodeAt(i) - 13));
+  */
+  /*
+        str = str.replaceAt(i, String.fromCharCode(str.charCodeAt(i) - 13));
+        //    console.log(str);
+      }
     }
-  }
-  //  console.log(str);
-  return str;
+    //  console.log(str);
+    return str;
+  */
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const inverseAlphabet = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  const inverseStr = str.replace(/[a-zA-Z]/gi, (item) => inverseAlphabet[alphabet.indexOf(item)]);
+  return inverseStr;
 }
 
 /**
@@ -317,7 +328,9 @@ function getCardId(value) {
     'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠',
   ];
   for (let i = 0; i < arr.length; i += 1) {
-    if (value === arr[i]) { result = i; }
+    if (value === arr[i]) {
+      result = i;
+    }
   }
   return result;
 }
