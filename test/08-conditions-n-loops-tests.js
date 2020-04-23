@@ -425,7 +425,7 @@ describe('08-conditions-n-loops-tasks', () => {
   });
 
 
-  it.optional('getCommonDirectoryPath should return a common path in the file system', () => {
+  it.optional('getCommonDirectoryPath should return the n-ary string representation of number', () => {
     [
       {
         pathes: ['/web/images/image1.png', '/web/images/image2.png'],
