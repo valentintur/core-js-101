@@ -639,14 +639,13 @@ function getElementByIndexes(arr, indexes) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  /* const result = [];
+
+function swapHeadAndTail(arr ) {
+  const result = [];
   const head = arr.slice(0, Math.round((arr.length - 1) / 2));
   const tail = arr.slice(Math.round(arr.length / 2), arr.length);
   const center = arr.slice(Math.round((arr.length - 1) / 2), Math.round(arr.length / 2));
   return result.concat(tail, center, head);
-  */
-  throw new Error('Not implemented');
 }
 
 
