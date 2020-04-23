@@ -5,7 +5,7 @@ it.optional = require('../extensions/it-optional');
 describe('03-arrays-tasks', () => {
   it.optional('findElement should return the index of specified value if exists', () => {
     [
-     {
+      {
         arr: ['Ace', 10, true],
         value: 10,
         expected: 1,

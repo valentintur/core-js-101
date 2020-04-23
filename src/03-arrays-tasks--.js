@@ -640,7 +640,7 @@ function getElementByIndexes(arr, indexes) {
  *
  */
 
-function swapHeadAndTail(arr ) {
+function swapHeadAndTail(arr) {
   const result = [];
   const head = arr.slice(0, Math.round((arr.length - 1) / 2));
   const tail = arr.slice(Math.round(arr.length / 2), arr.length);
