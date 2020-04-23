@@ -640,17 +640,8 @@ function getElementByIndexes(arr, indexes) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(arr) {
-  let result = [];
-  const evenStartPart = arr.slice(0, (arr.length / 2));
-  const oddStartPart = arr.slice(0, ((arr.length / 2) + 0, 5));
-  if (arr.length % 2 === 0) {
-    result = arr.splice(0, (arr.length / 2)).push(evenStartPart);
-  } else {
-    result = arr.splice(0, ((arr.length / 2) + 0, 5)).push(oddStartPart);
-  }
-
-  return result;
+function swapHeadAndTail(/* arr */) {
+  throw new Error('Not implemented');
 }
 
 
