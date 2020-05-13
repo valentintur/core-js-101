@@ -55,8 +55,12 @@ function parseDataFromIso8601(value) {
  *    Date(2012,1,1)    => true
  *    Date(2015,1,1)    => false
  */
-function isLeapYear(/* date */) {
-  throw new Error('Not implemented');
+function isLeapYear(date) {
+  const result = date.getFullYear();
+  if (result % 4 !== 0) return false;
+  if (result % 100 !== 0) return true;
+  if (result % 400 !== 0) return false;
+  return true;
 }
 
 
@@ -75,8 +79,15 @@ function isLeapYear(/* date */) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,10,0,0,250)     => "00:00:00.250"
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
-function timeSpanToString(/* startDate, endDate */) {
-  throw new Error('Not implemented');
+function timeSpanToString(startDate, endDate) {
+  let diff = endDate - startDate;
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  diff -= hours * 1000 * 60 * 60;
+  const minutes = Math.floor(diff / (1000 * 60));
+  diff -= minutes * 1000 * 60;
+  const seconds = Math.floor(diff / 1000);
+  diff -= seconds * 1000;
+  return `${String(hours).padStart(2, 0)}:${String(minutes).padStart(2, 0)}:${String(seconds).padStart(2, 0)}.${String(diff).padStart(3, 0)}`;
 }
 
 
@@ -96,8 +107,16 @@ function timeSpanToString(/* startDate, endDate */) {
  *    Date.UTC(2016,3,5,18, 0) => Math.PI
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
-function angleBetweenClockHands(/* date */) {
-  throw new Error('Not implemented');
+function angleBetweenClockHands(date) {
+  let hours = date.getUTCHours();
+  if (hours > 12) hours -= 12;
+  const minutes = date.getUTCMinutes();
+  // const hoursDeg = 0.5 * (60 * hours + minutes);
+  // const minutesDeg = 6 * minutes;
+
+  let diff = 60 * hours - 11 * minutes;
+  if (diff > 360) diff = Math.abs(diff) - 360;
+  return (0.5 * Math.PI * Math.abs(diff)) / 180;
 }
 
 
