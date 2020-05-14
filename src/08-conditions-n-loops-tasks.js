@@ -195,12 +195,29 @@ function isInsideCircle(circle, point) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-/*  const arr = str.split('');
+function findFirstSingleChar(str) {
+  const arr = str.split('');
+
+  const dict = {};
+  const res = [];
+
   for (let i = 0; i < arr.length; i += 1) {
-    return 'T';
-  } */
-  throw new Error('Not implemented');
+    if (dict[arr[i]] === undefined) {
+      dict[arr[i]] = 1;
+    } else {
+      dict[arr[i]] += 1;
+    }
+  }
+
+
+  //  for (const key in dict) {
+  Object.keys(dict).forEach((key) => {
+    if (dict[key] === 1) {
+      res.push(key);
+    }
+  });
+
+  return res[0];
 }
 
 
@@ -475,8 +492,28 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  console.log(position[2][0]);
+  console.log(position[2][1]);
+  console.log(position[2][2]);
+  console.log(position[2][0] === position[2][1] && position[2][0] === position[2][2]);
+  for (let i = 0; i < 3; i += 1) {
+    if (position[i][0] === position[i][1] && position[i][0] === position[i][2]) {
+      return position[i][0];
+    }
+  }
+  for (let j = 0; j < 3; j += 1) {
+    if (position[0][j] === position[1][j] && position[0][j] === position[2][j]) {
+      return position[0][j];
+    }
+  }
+
+  if (position[0][0] === position[1][1] && position[0][0] === position[2][2]) {
+    return position[0][0];
+  } if (position[0][2] === position[1][1] && position[0][2] === position[2][0]) {
+    return position[0][2];
+  }
+  return undefined;
 }
 
 
