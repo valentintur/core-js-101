@@ -63,6 +63,9 @@ function getPowerFunction(exponent) {
  *   getPolynom()      => null
  */
 function getPolynom() {
+  /* if (this.length === 0) return null;
+  if (this.length === 1) return `y = ${this}`;
+  if (this.length === 2) return `y = ${this}x - ${this}`; */
   throw new Error('Not implemented');
 }
 
