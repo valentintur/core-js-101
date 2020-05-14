@@ -29,14 +29,14 @@
  *                                                    //  Ask her again.';
  */
 function willYouMarryMe(isPositiveAnswer) {
-  return new Promise((resolutionFunc, rejectionFunc) => {
+  return new Promise((resolution, rejection) => {
     if (typeof isPositiveAnswer !== 'boolean') {
-      return rejectionFunc(new Error('Wrong parameter is passed! Ask her again.'));
+      return rejection(new Error('Wrong parameter is passed! Ask her again.'));
     }
     if (isPositiveAnswer) {
-      return resolutionFunc('Hooray!!! She said "Yes"!');
+      return resolution('Hooray!!! She said "Yes"!');
     }
-    return resolutionFunc('Oh no, she said "No".');
+    return resolution('Oh no, she said "No".');
   });
 }
 
@@ -56,8 +56,8 @@ function willYouMarryMe(isPositiveAnswer) {
  *    })
  *
  */
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
+function processAllPromises(array) {
+  return Promise.all(array);
 }
 
 /**
